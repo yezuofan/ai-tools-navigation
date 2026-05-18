@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 工具导航 | 发现最好用的AI工具</title>
+<meta name="description" content="收录100+精选AI工具，涵盖AI对话、AI绘画、AI视频、编程助手等分类。发现最好用的AI工具，提升你的工作效率。">
+<style>
+  :root {
+    --bg: #f8f9fa; --card: #fff; --text: #1a1a2e; --muted: #6b7280;
+    --primary: #6366f1; --primary-hover: #4f46e5; --border: #e5e7eb;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  header {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: #fff; padding: 60px 0 40px; text-align: center;
+  }
+  header h1 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 800; }
+  header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+  header .count { margin-top: 15px; font-size: 0.9rem; opacity: 0.8; }
+
+  /* Search */
+  .search-wrap { max-width: 600px; margin: -25px auto 30px; position: relative; z-index: 10; }
+  .search-wrap input {
+    width: 100%; padding: 16px 20px; border: 2px solid var(--border);
+    border-radius: 16px; font-size: 1rem; background: var(--card);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: all 0.2s;
+    outline: none;
+  }
+  .search-wrap input:focus { border-color: var(--primary); box-shadow: 0 4px 25px rgba(99,102,241,0.2); }
+
+  /* Category Tabs */
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 30px; }
+  .tabs button {
+    padding: 8px 18px; border: 1px solid var(--border); border-radius: 20px;
+    background: var(--card); cursor: pointer; font-size: 0.9rem; transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .tabs button:hover { border-color: var(--primary); color: var(--primary); }
+  .tabs button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+  /* Tool Grid */
+  .tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-bottom: 40px; }
+  .tool-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 20px; transition: all 0.25s; cursor: pointer;
+    box-shadow: var(--shadow);
+  }
+  .tool-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); border-color: var(--primary); }
+  .tool-card .icon { font-size: 2rem; margin-bottom: 10px; }
+  .tool-card h3 { font-size: 1.1rem; margin-bottom: 6px; font-weight: 600; }
+  .tool-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; margin-bottom: 12px; }
+  .tool-card .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tool-card .tag {
+    font-size: 0.75rem; padding: 3px 10px; border-radius: 10px;
+    background: #f0f0ff; color: var(--primary);
+  }
+  .tool-card .tag.free { background: #ecfdf5; color: #059669; }
+  .tool-card .tag.paid { background: #fef3c7; color: #d97706; }
+  .tool-card .tag.freemium { background: #ede9fe; color: #7c3aed; }
+
+  /* Category Section Title */
+  .category-section { margin-bottom: 20px; }
+  .category-section h2 {
+    font-size: 1.4rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  /* Footer */
+  footer {
+    text-align: center; padding: 30px 0; color: var(--muted); font-size: 0.85rem;
+    border-top: 1px solid var(--border); margin-top: 20px;
+  }
+  footer a { color: var(--primary); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    header h1 { font-size: 1.8rem; }
+    header { padding: 40px 0 30px; }
+    .tools { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>🤖 AI 工具导航</h1>
+    <p>收录 100+ 精选 AI 工具，帮你找到最适合的那一个</p>
+    <div class="count">持续更新 · 完全免费</div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="🔍 搜索工具名称或关键词..." oninput="filterTools()">
+  </div>
+
+  <div class="tabs" id="tabs">
+    <button class="active" onclick="switchCategory('all')">🏠 全部</button>
+    <button onclick="switchCategory('chat')">💬 AI对话</button>
+    <button onclick="switchCategory('image')">🎨 AI绘画</button>
+    <button onclick="switchCategory('video')">🎬 AI视频</button>
+    <button onclick="switchCategory('audio')">🎵 AI音频</button>
+    <button onclick="switchCategory('code')">💻 编程</button>
+    <button onclick="switchCategory('search')">🔍 AI搜索</button>
+    <button onclick="switchCategory('write')">✍️ AI写作</button>
+    <button onclick="switchCategory('network')">🔧 网络工具</button>
+    <button onclick="switchCategory('other')">📦 更多</button>
+  </div>
+
+  <div id="toolsContainer"></div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>AI 工具导航 · 发现最好用的 AI 工具 | <a href="https://huanghaiwan.com">🌊 海洋指南</a></p>
+    <p style="margin-top:5px;font-size:0.8rem;">收录工具仅供参考，排名不分先后</p>
+  </div>
+</footer>
+
+<script>
+const tools = [
+  // ===== AI对话 =====
+  { cat:'chat', icon:'💬', name:'ChatGPT', desc:'OpenAI 推出的最强 AI 对话助手，支持文本、图片、语音多模态交互', tags:['freemium','热门'], url:'https://chat.openai.com' },
+  { cat:'chat', icon:'💬', name:'Claude', desc:'Anthropic 出品，擅长长文写作、深度分析、代码生成，上下文可达 1M tokens', tags:['freemium','热门'], url:'https://claude.ai' },
+  { cat:'chat', icon:'💬', name:'Gemini', desc:'Google 多模态 AI，支持文本、图片、视频、音频理解', tags:['免费','热门'], url:'https://gemini.google.com' },
+  { cat:'chat', icon:'💬', name:'DeepSeek', desc:'国产开源大模型，推理能力强，性价比极高，支持 1M 上下文', tags:['免费','热门'], url:'https://chat.deepseek.com' },
+  { cat:'chat', icon:'💬', name:'豆包', desc:'字节跳动 AI 助手，集成在抖音生态，支持图片理解', tags:['免费'], url:'https://www.doubao.com' },
+  { cat:'chat', icon:'💬', name:'Kimi', desc:'月之暗面出品，擅长长文本阅读分析，支持 200 万字上下文', tags:['免费','热门'], url:'https://kimi.moonshot.cn' },
+  { cat:'chat', icon:'💬', name:'通义千问', desc:'阿里云 AI 助手，支持文本、图片、文档分析', tags:['免费'], url:'https://tongyi.aliyun.com' },
+  { cat:'chat', icon:'💬', name:'文心一言', desc:'百度出品，中文理解能力强，深度集成百度生态', tags:['免费'], url:'https://yiyan.baidu.com' },
+  { cat:'chat', icon:'💬', name:'智谱清言', desc:'智谱 AI 出品，基于 GLM 大模型，支持多轮对话', tags:['免费'], url:'https://chatglm.cn' },
+  { cat:'chat', icon:'💬', name:'讯飞星火', desc:'科大讯飞 AI 助手，语音交互能力强', tags:['免费'], url:'https://xinghuo.xfyun.cn' },
+  { cat:'chat', icon:'💬', name:'Grok', desc:'xAI 出品，Elon Musk 的 AI 助手，实时获取 X 平台信息', tags:['付费'], url:'https://grok.com' },
+  { cat:'chat', icon:'💬', name:'百川智能', desc:'百川智能出品，专注中文场景', tags:['免费'], url:'https://www.baichuan-ai.com' },
+  { cat:'chat', icon:'💬', name:'MiniMax', desc:'稀宇科技出品，Hailuo AI，支持文本和语音', tags:['免费'], url:'https://www.minimaxi.com' },
+  { cat:'chat', icon:'💬', name:'Perplexity', desc:'AI 搜索引擎，实时联网 + 引用来源，适合深度调研', tags:['freemium','热门'], url:'https://www.perplexity.ai' },
+
+  // ===== AI绘画 =====
+  { cat:'image', icon:'🎨', name:'Midjourney', desc:'AI 绘画标杆，艺术感极强，适合创意设计和概念图', tags:['付费','热门'], url:'https://www.midjourney.com' },
+  { cat:'image', icon:'🎨', name:'DALL·E 3', desc:'OpenAI 出品，集成在 ChatGPT 中，文字理解能力出色', tags:['付费'], url:'https://openai.com/dall-e-3' },
+  { cat:'image', icon:'🎨', name:'Stable Diffusion', desc:'开源 AI 绘画模型，本地部署，完全免费可定制', tags:['免费','开源'], url:'https://stability.ai' },
+  { cat:'image', icon:'🎨', name:'Leonardo AI', desc:'在线 AI 绘画平台，模型丰富，适合游戏资产创作', tags:['freemium'], url:'https://leonardo.ai' },
+  { cat:'image', icon:'🎨', name:'即梦', desc:'字节跳动 AI 绘画，中文友好，生成速度快', tags:['免费'], url:'https://jimeng.jianying.com' },
+  { cat:'image', icon:'🎨', name:'通义万相', desc:'阿里 AI 绘画，支持文生图、图生图、风格迁移', tags:['免费'], url:'https://tongyi.aliyun.com/wanxiang' },
+  { cat:'image', icon:'🎨', name:'文心一格', desc:'百度 AI 绘画，中文理解优秀，国风效果出色', tags:['免费'], url:'https://yige.baidu.com' },
+  { cat:'image', icon:'🎨', name:'海艺 AI', desc:'国产 AI 绘画平台，二次元风格出色', tags:['免费'], url:'https://www.haiyiai.com' },
+  { cat:'image', icon:'🎨', name:'ComfyUI', desc:'节点式 Stable Diffusion 工作流工具，功能强大灵活', tags:['免费','开源'], url:'https://www.comfy.org' },
+  { cat:'image', icon:'🎨', name:'Fooocus', desc:'Stable Diffusion 简化版，一键安装即开即用', tags:['免费','开源'], url:'https://fooocus.com' },
+  { cat:'image', icon:'🎨', name:'Adobe Firefly', desc:'Adobe 官方 AI 绘画，深度集成 Photoshop 等工具', tags:['付费'], url:'https://firefly.adobe.com' },
+  { cat:'image', icon:'🎨', name:'Recraft', desc:'AI 设计工具，专注于图标、Logo、矢量图生成', tags:['freemium'], url:'https://www.recraft.ai' },
+  { cat:'image', icon:'🎨', name:'堆友', desc:'阿里设计团队出品，3D 素材和 AI 绘画一站式平台', tags:['免费'], url:'https://diy.taobao.com' },
+  { cat:'image', icon:'🎨', name:'Canva AI', desc:'在线设计平台内置 AI 绘图功能，适合社交媒体素材', tags:['freemium'], url:'https://www.canva.com' },
+
+  // ===== AI视频 =====
+  { cat:'video', icon:'🎬', name:'Runway Gen-3', desc:'专业 AI 视频生成工具，影视级效果，支持图生视频和文生视频', tags:['付费','热门'], url:'https://runwayml.com' },
+  { cat:'video', icon:'🎬', name:'Pika', desc:'AI 视频生成平台，操作简单，支持多种风格', tags:['freemium'], url:'https://pika.art' },
+  { cat:'video', icon:'🎬', name:'可灵 Kling', desc:'快手 AI 视频生成，人物动作自然流畅，国内领先', tags:['免费'], url:'https://kling.kuaishou.com' },
+  { cat:'video', icon:'🎬', name:'Luma Dream Machine', desc:'高质量 AI 视频生成，电影感强，物理模拟出色', tags:['freemium'], url:'https://lumalabs.ai' },
+  { cat:'video', icon:'🎬', name:'Sora', desc:'OpenAI 视频生成模型，画面质量极高，支持超长视频', tags:['付费'], url:'https://openai.com/sora' },
+  { cat:'video', icon:'🎬', name:'Vidu', desc:'生数科技出品，中国版 Sora，视频生成质量优秀', tags:['免费'], url:'https://www.vidu.com' },
+  { cat:'video', icon:'🎬', name:'Haiper', desc:'AI 视频生成工具，免费额度充足，适合入门体验', tags:['免费'], url:'https://haiper.ai' },
+  { cat:'video', icon:'🎬', name:'剪映', desc:'字节跳动视频编辑工具，内置 AI 功能（数字人、AI 剪辑）', tags:['免费'], url:'https://jianying.com' },
+
+  // ===== AI音频 =====
+  { cat:'audio', icon:'🎵', name:'Suno', desc:'AI 音乐生成，输入歌词即可生成完整歌曲，支持多种风格', tags:['freemium','热门'], url:'https://suno.com' },
+  { cat:'audio', icon:'🎵', name:'ElevenLabs', desc:'AI 语音合成标杆，声音极其自然，支持声音克隆', tags:['freemium','热门'], url:'https://elevenlabs.io' },
+  { cat:'audio', icon:'🎵', name:'Udio', desc:'AI 音乐生成，音质优秀，支持自定义歌词', tags:['免费'], url:'https://udio.com' },
+  { cat:'audio', icon:'🎵', name:'天工音乐', desc:'昆仑万维 AI 音乐生成，中文歌曲效果好', tags:['免费'], url:'https://music.tiangong.cn' },
+  { cat:'audio', icon:'🎵', name:'Adobe Podcast', desc:'AI 音频处理，一键降噪、增强人声、平衡音量', tags:['免费'], url:'https://podcast.adobe.com' },
+  { cat:'audio', icon:'🎵', name:'Descript', desc:'AI 音视频编辑，支持文字编辑视频、AI 配音', tags:['付费'], url:'https://www.descript.com' },
+  { cat:'audio', icon:'🎵', name:'讯飞配音', desc:'科大讯飞 AI 配音，多种主播声音，适合做短视频配音', tags:['付费'], url:'https://peiyun.xfyun.cn' },
+  { cat:'audio', icon:'🎵', name:'魔音工坊', desc:'AI 配音工具，支持情感化语音合成，适合自媒体', tags:['付费'], url:'https://www.moyin.com' },
+
+  // ===== 编程 =====
+  { cat:'code', icon:'💻', name:'GitHub Copilot', desc:'AI 编程助手，集成 VS Code/JetBrains，代码补全强大', tags:['付费','热门'], url:'https://github.com/features/copilot' },
+  { cat:'code', icon:'💻', name:'Cursor', desc:'AI 原生 IDE，基于 VS Code，内置 AI 编程功能', tags:['freemium','热门'], url:'https://cursor.com' },
+  { cat:'code', icon:'💻', name:'Claude Code', desc:'Anthropic 终端 AI 编程工具，擅长复杂重构和调试', tags:['付费'], url:'https://docs.anthropic.com/en/docs/claude-code' },
+  { cat:'code', icon:'💻', name:'Windsurf', desc:'Codeium 出品 AI IDE，流式编程体验，免费版功能强大', tags:['freemium'], url:'https://codeium.com/windsurf' },
+  { cat:'code', icon:'💻', name:'OpenAI Codex', desc:'OpenAI 编程模型，支持自然语言转代码', tags:['付费'], url:'https://openai.com/codex' },
+  { cat:'code', icon:'💻', name:'Amazon Q', desc:'AWS AI 编程助手，深度集成 AWS 生态', tags:['免费'], url:'https://aws.amazon.com/q' },
+  { cat:'code', icon:'💻', name:'Tabnine', desc:'AI 代码补全，支持本地模型，数据安全有保障', tags:['freemium'], url:'https://www.tabnine.com' },
+  { cat:'code', icon:'💻', name:'通义灵码', desc:'阿里 AI 编程助手，中文友好，免费使用', tags:['免费'], url:'https://tongyi.aliyun.com/lingma' },
+  { cat:'code', icon:'💻', name:'百度 Comate', desc:'百度 AI 编程助手，深度适配国产开发环境', tags:['免费'], url:'https://comate.baidu.com' },
+  { cat:'code', icon:'💻', name:'CodeGPT', desc:'VS Code 插件，支持多种大模型切换', tags:['freemium'], url:'https://codegpt.co' },
+
+  // ===== AI搜索 =====
+  { cat:'search', icon:'🔍', name:'Perplexity', desc:'AI 搜索引擎中的标杆，实时联网+引用来源', tags:['freemium','热门'], url:'https://www.perplexity.ai' },
+  { cat:'search', icon:'🔍', name:'秘塔 AI 搜索', desc:'国产 AI 搜索引擎，无广告，结果结构化展示', tags:['免费','热门'], url:'https://metaso.cn' },
+  { cat:'search', icon:'🔍', name:'天工 AI 搜索', desc:'昆仑万维 AI 搜索，支持深度搜索模式', tags:['免费'], url:'https://www.tiangong.cn' },
+  { cat:'search', icon:'🔍', name:'360 AI 搜索', desc:'360 出品 AI 搜索，中文搜索体验好', tags:['免费'], url:'https://www.360ai.cn' },
+  { cat:'search', icon:'🔍', name:'夸克 AI', desc:'阿里夸克浏览器内置 AI 搜索，手机端体验好', tags:['免费'], url:'https://quark.sm.cn' },
+  { cat:'search', icon:'🔍', name:'iAsk', desc:'AI 问答引擎，快速精准回答问题', tags:['免费'], url:'https://iask.ai' },
+  { cat:'search', icon:'🔍', name:'You.com', desc:'AI 搜索引擎，支持多种 AI 模式切换', tags:['免费'], url:'https://you.com' },
+  { cat:'search', icon:'🔍', name:'Devv', desc:'面向开发者的 AI 搜索引擎，专注技术问答', tags:['免费'], url:'https://devv.ai' },
+
+  // ===== AI写作 =====
+  { cat:'write', icon:'✍️', name:'Jasper', desc:'专业 AI 写作工具，适合营销文案、博客、广告', tags:['付费'], url:'https://www.jasper.ai' },
+  { cat:'write', icon:'✍️', name:'Copy.ai', desc:'AI 营销文案生成，快速产出社交媒体内容和广告语', tags:['freemium'], url:'https://www.copy.ai' },
+  { cat:'write', icon:'✍️', name:'Writesonic', desc:'AI 写作平台，支持文章写作、SEO 优化', tags:['freemium'], url:'https://writesonic.com' },
+  { cat:'write', icon:'✍️', name:'Rytr', desc:'性价比高的 AI 写作工具，支持 40+ 模板', tags:['freemium'], url:'https://rytr.me' },
+  { cat:'write', icon:'✍️', name:'讯飞写作', desc:'科大讯飞 AI 写作，适合公文、报告、会议纪要', tags:['免费'], url:'https://write.xfyun.cn' },
+  { cat:'write', icon:'✍️', name:'笔灵 AI', desc:'国产 AI 写作工具，支持论文、方案、日报等场景', tags:['免费'], url:'https://ibiling.cn' },
+  { cat:'write', icon:'✍️', name:'火山写作', desc:'字节跳动 AI 写作工具，英文写作优化出色', tags:['免费'], url:'https://writing.volcengine.com' },
+  { cat:'write', icon:'✍️', name:'Grammarly', desc:'AI 英文写作助手，语法检查、润色、改写', tags:['freemium','热门'], url:'https://www.grammarly.com' },
+  { cat:'write', icon:'✍️', name:'稿定 AI', desc:'国产 AI 写作+设计平台，适合自媒体创作者', tags:['付费'], url:'https://www.gaoding.com' },
+  { cat:'write', icon:'✍️', name:'哪吒 AI', desc:'AI 写作工具，支持多种写作场景模板', tags:['付费'], url:'https://nezha.ai' },
+
+  // ===== 网络工具 =====
+  { cat:'network', icon:'🔧', name:'Clash Verge', desc:'跨平台代理客户端，支持全平台，界面简洁', tags:['免费','开源','热门'], url:'https://clashverge.com' },
+  { cat:'network', icon:'🔧', name:'Sing-Box', desc:'通用代理客户端，支持多协议多平台', tags:['免费','开源'], url:'https://sing-box.sagernet.org' },
+  { cat:'network', icon:'🔧', name:'Surge', desc:'iOS/macOS 最强代理工具，功能全面性能强劲', tags:['付费','热门'], url:'https://nssurge.com' },
+  { cat:'network', icon:'🔧', name:'Stash', desc:'iOS 代理客户端，Clash 内核，规则配置灵活', tags:['付费'], url:'https://stash.wiki' },
+  { cat:'network', icon:'🔧', name:'Quantumult X', desc:'iOS 代理工具，支持复杂规则和脚本', tags:['付费'], url:'https://quantumult.app' },
+  { cat:'network', icon:'🔧', name:'Shadowrocket', desc:'iOS 代理客户端，轻量易用，新手友好', tags:['付费'], url:'https://shadowrocket.app' },
+  { cat:'network', icon:'🔧', name:'v2rayN', desc:'Windows 代理客户端，功能强大，支持多种协议', tags:['免费','开源'], url:'https://github.com/2dust/v2rayN' },
+  { cat:'network', icon:'🔧', name:'Nekoray', desc:'跨平台代理客户端，Qt 界面，支持多种协议', tags:['免费','开源'], url:'https://github.com/MatsuriDayo/nekoray' },
+  { cat:'network', icon:'🔧', name:'Clash Meta', desc:'Clash 内核增强版，支持更多协议和高级功能', tags:['免费','开源'], url:'https://github.com/MetaCubeX/Clash.Meta' },
+  { cat:'network', icon:'🔧', name:'Xray', desc:'新一代代理核心，v2fly 后继项目，高性能', tags:['免费','开源'], url:'https://xtls.github.io' },
+  { cat:'network', icon:'🔧', name:'Hiddify', desc:'现代化代理客户端，界面美观，一键连接', tags:['免费','开源'], url:'https://hiddify.com' },
+  { cat:'network', icon:'🔧', name:'V2Box', desc:'Android 代理客户端，功能全面，支持订阅', tags:['免费'], url:'https://github.com/dawei101/v2box' },
+
+  // ===== 更多 =====
+  { cat:'other', icon:'📦', name:'Notion AI', desc:'笔记+AI 写作助手，集成在 Notion 中', tags:['付费'], url:'https://www.notion.so' },
+  { cat:'other', icon:'📦', name:'Gamma', desc:'AI 生成 PPT/文档/网页，一键生成精美演示文稿', tags:['freemium'], url:'https://gamma.app' },
+  { cat:'other', icon:'📦', name:'Beautiful.ai', desc:'AI 自动排版 PPT，设计感强', tags:['付费'], url:'https://www.beautiful.ai' },
+  { cat:'other', icon:'📦', name:'Tome', desc:'AI 叙事式 PPT 生成，适合讲故事', tags:['免费'], url:'https://tome.app' },
+  { cat:'other', icon:'📦', name:'Otter.ai', desc:'AI 会议记录转写，实时录音转文字', tags:['freemium'], url:'https://otter.ai' },
+  { cat:'other', icon:'📦', name:'Fireflies', desc:'AI 会议助手，自动记录、总结会议内容', tags:['付费'], url:'https://fireflies.ai' },
+  { cat:'other', icon:'📦', name:'Tome', desc:'AI 叙事式 PPT 生成，适合讲故事', tags:['免费'], url:'https://tome.app' },
+  { cat:'other', icon:'📦', name:'Remove.bg', desc:'AI 一键去除图片背景，效果精准', tags:['免费'], url:'https://www.remove.bg' },
+  { cat:'other', icon:'📦', name:'Fliki', desc:'AI 文字转视频，快速生成短视频内容', tags:['freemium'], url:'https://fliki.ai' },
+  { cat:'other', icon:'📦', name:'HeyGen', desc:'AI 数字人生成，上传照片即可生成说话视频', tags:['付费'], url:'https://www.heygen.com' },
+  { cat:'other', icon:'📦', name:'D-ID', desc:'AI 数字人视频生成，支持实时互动', tags:['付费'], url:'https://www.d-id.com' },
+  { cat:'other', icon:'📦', name:'Replicate', desc:'AI 模型运行平台，在线调用各种开源模型', tags:['付费'], url:'https://replicate.com' },
+  { cat:'other', icon:'📦', name:'Hugging Face', desc:'AI 模型社区，托管 50 万+ 开源模型', tags:['免费','热门'], url:'https://huggingface.co' },
+];
+
+let currentCategory = 'all';
+
+function switchCategory(cat) {
+  currentCategory = cat;
+  document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.tabs button[onclick*="${cat}"]`).classList.add('active');
+  renderTools();
+}
+
+function filterTools() {
+  renderTools();
+}
+
+function renderTools() {
+  const search = document.getElementById('search').value.toLowerCase();
+  const container = document.getElementById('toolsContainer');
+
+  // Group by category
+  const categories = {
+    chat: '💬 AI 对话助手', image: '🎨 AI 绘画工具', video: '🎬 AI 视频工具',
+    audio: '🎵 AI 音频/音乐', code: '💻 编程助手', search: '🔍 AI 搜索',
+    write: '✍️ AI 写作工具', network: '🔧 网络工具', other: '📦 更多工具'
+  };
+
+  let html = '';
+  for (const [cat, title] of Object.entries(categories)) {
+    if (currentCategory !== 'all' && currentCategory !== cat) continue;
+
+    const filtered = tools.filter(t =>
+      t.cat === cat &&
+      (t.name.toLowerCase().includes(search) ||
+       t.desc.toLowerCase().includes(search) ||
+       t.tags.some(tag => tag.includes(search)))
+    );
+
+    if (filtered.length === 0 && search) continue;
+
+    html += `<div class="category-section"><h2>${title} <span style="font-size:0.8rem;color:var(--muted);font-weight:400;">(${filtered.length})</span></h2>`;
+    html += '<div class="tools">';
+
+    filtered.forEach(t => {
+      const tagHtml = t.tags.map(tag => {
+        let cls = 'tag';
+        if (tag === '免费' || tag === '开源') cls += ' free';
+        else if (tag === '付费') cls += ' paid';
+        else if (tag === 'freemium') cls += ' freemium';
+        return `<span class="${cls}">${tag}</span>`;
+      }).join('');
+      html += `<a href="${t.url}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+        <div class="tool-card">
+          <div class="icon">${t.icon}</div>
+          <h3>${t.name}</h3>
+          <p>${t.desc}</p>
+          <div class="tags">${tagHtml}</div>
+        </div>
+      </a>`;
+    });
+
+    html += '</div></div>';
+  }
+
+  if (!html) {
+    html = '<div style="text-align:center;padding:60px 20px;color:var(--muted);font-size:1.1rem;">没有找到匹配的工具，试试其他关键词 🔍</div>';
+  }
+
+  container.innerHTML = html;
+}
+
+// Initial render
+renderTools();
+</script>
+</body>
+</html>
