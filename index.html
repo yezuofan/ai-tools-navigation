@@ -177,6 +177,7 @@ const tools = [
   { cat:'video', icon:'🎬', name:'Vidnoz AI', desc:'免费在线AI视频生成器，支持数字人、文生视频，模板丰富', tags:['免费'], url:'https://www.vidnoz.com' },
   { cat:'video', icon:'🎬', name:'Hailuo AI', desc:'MiniMax出品AI视频生成，人物动作自然，支持图生视频', tags:['免费'], url:'https://hailuoai.video' },
   { cat:'video', icon:'🎬', name:'Veo', desc:'Google DeepMind AI 视频生成，画质极高，支持多种风格和时长', tags:['免费'], url:'https://deepmind.google/technologies/veo' },
+  { cat:'video', icon:'🎬', name:'Avataar Varya', desc:'超低价 AI 视频生成，$0.005/秒，基于 Wan 2.2 蒸馏，速度快 10 倍', tags:['免费'], url:'https://varya.avataar.ai' },
 
   // ===== AI音频 =====
   { cat:'audio', icon:'🎵', name:'Suno', desc:'AI 音乐生成，输入歌词即可生成完整歌曲，支持多种风格', tags:['freemium','热门'], url:'https://suno.com' },
@@ -203,6 +204,7 @@ const tools = [
   { cat:'code', icon:'💻', name:'Lovable', desc:'AI 应用构建器，自然语言生成完整 Web 应用，非技术用户友好', tags:['freemium'], url:'https://lovable.dev' },
   { cat:'code', icon:'💻', name:'v0.dev', desc:'Vercel 出品 AI UI 生成器，自然语言生成 React/Tailwind 组件', tags:['freemium','热门'], url:'https://v0.dev' },
   { cat:'code', icon:'💻', name:'Cline', desc:'VS Code AI 编程扩展，自主编写代码并执行终端命令', tags:['免费','开源'], url:'https://cline.bot' },
+  { cat:'code', icon:'💻', name:'Command Code', desc:'AI 编程环境，一键生成可运行的生产级代码', tags:['免费'], url:'https://www.cc.dev' },
 
   // ===== AI搜索 =====
   { cat:'search', icon:'🔍', name:'Perplexity', desc:'AI 搜索引擎中的标杆，实时联网+引用来源', tags:['freemium','热门'], url:'https://www.perplexity.ai' },
@@ -244,9 +246,9 @@ const tools = [
   { cat:'other', icon:'📦', name:'Notion AI', desc:'笔记+AI 写作助手，集成在 Notion 中', tags:['付费'], url:'https://www.notion.so' },
   { cat:'other', icon:'📦', name:'Gamma', desc:'AI 生成 PPT/文档/网页，一键生成精美演示文稿', tags:['freemium'], url:'https://gamma.app' },
   { cat:'other', icon:'📦', name:'Beautiful.ai', desc:'AI 自动排版 PPT，设计感强', tags:['付费'], url:'https://www.beautiful.ai' },
-    { cat:'other', icon:'📦', name:'Otter.ai', desc:'AI 会议记录转写，实时录音转文字', tags:['freemium'], url:'https://otter.ai' },
+  { cat:'other', icon:'📦', name:'Otter.ai', desc:'AI 会议记录转写，实时录音转文字', tags:['freemium'], url:'https://otter.ai' },
   { cat:'other', icon:'📦', name:'Fireflies', desc:'AI 会议助手，自动记录、总结会议内容', tags:['付费'], url:'https://fireflies.ai' },
-    { cat:'other', icon:'📦', name:'Remove.bg', desc:'AI 一键去除图片背景，效果精准', tags:['免费'], url:'https://www.remove.bg' },
+  { cat:'other', icon:'📦', name:'Remove.bg', desc:'AI 一键去除图片背景，效果精准', tags:['免费'], url:'https://www.remove.bg' },
   { cat:'other', icon:'📦', name:'Fliki', desc:'AI 文字转视频，快速生成短视频内容', tags:['freemium'], url:'https://fliki.ai' },
   { cat:'other', icon:'📦', name:'HeyGen', desc:'AI 数字人生成，上传照片即可生成说话视频', tags:['付费'], url:'https://www.heygen.com' },
   { cat:'other', icon:'📦', name:'D-ID', desc:'AI 数字人视频生成，支持实时互动', tags:['付费'], url:'https://www.d-id.com' },
@@ -279,56 +281,42 @@ function renderTools() {
 
   // Group by category
   const categories = {
-    chat: '💬 AI 对话助手', image: '🎨 AI 绘画工具', video: '🎬 AI 视频工具',
-    audio: '🎵 AI 音频/音乐', code: '💻 编程助手', search: '🔍 AI 搜索',
-    write: '✍️ AI 写作工具', network: '🔧 网络工具', other: '📦 更多工具'
+    chat: { name: 'AI 对话', icon: '💬', tools: [] },
+    image: { name: 'AI 绘画', icon: '🎨', tools: [] },
+    video: { name: 'AI 视频', icon: '🎬', tools: [] },
+    audio: { name: 'AI 音频', icon: '🎵', tools: [] },
+    code: { name: '编程', icon: '💻', tools: [] },
+    search: { name: 'AI 搜索', icon: '🔍', tools: [] },
+    write: { name: 'AI 写作', icon: '✍️', tools: [] },
+    network: { name: '网络工具', icon: '🔧', tools: [] },
+    other: { name: '更多', icon: '📦', tools: [] }
   };
 
+  tools.forEach(t => {
+    if (currentCategory !== 'all' && t.cat !== currentCategory) return;
+    if (search && !t.name.toLowerCase().includes(search) && !t.desc.toLowerCase().includes(search)) return;
+    if (categories[t.cat]) categories[t.cat].tools.push(t);
+  });
+
   let html = '';
-  for (const [cat, title] of Object.entries(categories)) {
-    if (currentCategory !== 'all' && currentCategory !== cat) continue;
-
-    const filtered = tools.filter(t =>
-      t.cat === cat &&
-      (t.name.toLowerCase().includes(search) ||
-       t.desc.toLowerCase().includes(search) ||
-       t.tags.some(tag => tag.includes(search)))
-    );
-
-    if (filtered.length === 0 && search) continue;
-
-    html += `<div class="category-section"><h2>${title} <span style="font-size:0.8rem;color:var(--muted);font-weight:400;">(${filtered.length})</span></h2>`;
-    html += '<div class="tools">';
-
-    filtered.forEach(t => {
-      const tagHtml = t.tags.map(tag => {
-        let cls = 'tag';
-        if (tag === '免费' || tag === '开源') cls += ' free';
-        else if (tag === '付费') cls += ' paid';
-        else if (tag === 'freemium') cls += ' freemium';
-        return `<span class="${cls}">${tag}</span>`;
-      }).join('');
-      html += `<a href="${t.url}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
-        <div class="tool-card">
-          <div class="icon">${t.icon}</div>
-          <h3>${t.name}</h3>
-          <p>${t.desc}</p>
-          <div class="tags">${tagHtml}</div>
-        </div>
-      </a>`;
+  for (const [key, cat] of Object.entries(categories)) {
+    if (cat.tools.length === 0) continue;
+    html += `<div class="category-section"><h2>${cat.icon} ${cat.name}</h2><div class="tools">`;
+    cat.tools.sort((a, b) => a.name.localeCompare(b.name, 'zh'));
+    cat.tools.forEach(t => {
+      const tagHtml = t.tags.map(tag => `<span class="tag ${tag === '免费' ? 'free' : tag === '付费' ? 'paid' : 'freemium'}">${tag}</span>`).join('');
+      html += `<div class="tool-card" onclick="window.open('${t.url}','_blank')">
+        <div class="icon">${t.icon}</div>
+        <h3>${t.name}</h3>
+        <p>${t.desc}</p>
+        <div class="tags">${tagHtml}</div>
+      </div>`;
     });
-
-    html += '</div></div>';
+    html += `</div></div>`;
   }
-
-  if (!html) {
-    html = '<div style="text-align:center;padding:60px 20px;color:var(--muted);font-size:1.1rem;">没有找到匹配的工具，试试其他关键词 🔍</div>';
-  }
-
-  container.innerHTML = html;
+  container.innerHTML = html || '<p style="text-align:center;color:var(--muted);padding:40px 0;">没有找到匹配的工具</p>';
 }
 
-// Initial render
 renderTools();
 </script>
 </body>
