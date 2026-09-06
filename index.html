@@ -151,6 +151,7 @@ const tools = [
   { cat:'chat', icon:'💬', name:'Claude Cowork', desc:'Anthropic AI 同事代理，可读取本地文件、整理文件夹、起草文档，把任务交给 Claude 后关掉电脑也能继续干活', tags:['付费','热门'], url:'https://claude.com' },
   { cat:'chat', icon:'💬', name:'Claude Tag', desc:'Anthropic 推出的 Slack 常驻 AI 队友，@Claude 即可派活，团队共享上下文协作', tags:['付费'], url:'https://www.anthropic.com/news/introducing-claude-tag' },
   { cat:'chat', icon:'💬', name:'GLM-5.3-Flash', desc:'智谱开源新模型「牛来」，一度被误认是谷歌新作，国产开源大模型，推理速度快性价比高', tags:['免费','热门'], url:'https://open.bigmodel.cn' },
+  { cat:'chat', icon:'💬', name:'GPT-6 Astra', desc:'OpenAI 新一代旗舰大模型，官方称迄今最智能、对齐度最高，主打 Computer Use：可操作电脑和浏览器闭环完成整套工作，ChatGPT 付费版、API 与 AWS 已上线', tags:['付费','热门'], url:'https://openai.com/index/gpt-6-astra/' },
 
   // ===== AI绘画 =====
   { cat:'image', icon:'🎨', name:'Midjourney', desc:'AI 绘画标杆，艺术感极强，适合创意设计和概念图', tags:['付费','热门'], url:'https://www.midjourney.com' },
@@ -172,6 +173,7 @@ const tools = [
   { cat:'image', icon:'🎨', name:'LiblibAI', desc:'国内主流 AI 绘画平台，海量模型与 LoRA 社区，日均生成 500 万次，支持在线炼丹训练', tags:['免费','热门'], url:'https://www.liblib.art' },
   { cat:'image', icon:'🎨', name:'Hi3D', desc:'AI 3D 模型生成平台，V3.0 支持 2048³ 高精度重建，文生/图生 3D 并直连 3D 打印', tags:['免费','热门'], url:'https://www.hi3d.ai' },
   { cat:'image', icon:'🎨', name:'SenseNova U1.5 Lite', desc:'商汤开源 8B 生图模型，4K 直出，多图融合理解出色，比肩闭源 Image 2', tags:['免费','开源'], url:'https://www.sensenova.cn' },
+  { cat:'image', icon:'🎨', name:'MAI-Image 2.6', desc:'微软新一代文生图模型，Arena 文生图榜跃居第二，Flash 版生图速度全球第一、成本直降 70%，Foundry 公开预览', tags:['付费','热门'], url:'https://ai.azure.com/catalog/models/MAI-Image-2.6-Flash?publisher=microsoft' },
 
   // ===== AI视频 =====
   { cat:'video', icon:'🎬', name:'Runway Gen-3', desc:'专业 AI 视频生成工具，影视级效果，支持图生视频和文生视频', tags:['付费','热门'], url:'https://runwayml.com' },
@@ -197,6 +199,7 @@ const tools = [
   { cat:'video', icon:'🎬', name:'小云雀', desc:'剪映推出 AI 短剧 Agent，全球首个 Seedance 2.0 短剧智能体，一句话生成完整短剧', tags:['免费','热门'], url:'https://xyq.jianying.com' },
   { cat:'video', icon:'🎬', name:'Gemini Omni 1.1 Flash', desc:'谷歌最新视频生成模型，最高 4K 输出，支持场景扩展（10 秒步长至 40 秒）和指定首尾帧', tags:['免费','热门'], url:'https://aistudio.google.com' },
   { cat:'video', icon:'🎬', name:'FLUX Upscale', desc:'Black Forest Labs 视频增强工具，生成式重建任意视频至原生 4K，修复人脸模糊和纹理闪烁', tags:['免费','热门'], url:'https://bfl.ai' },
+  { cat:'video', icon:'🎬', name:'Atlas', desc:'李飞飞 World Labs 发布的全球首个多模态世界模型，像素级相机控制生成运镜视频并重建 3D 空间，可在其 Marble 平台直接创作可走进的 3D 世界', tags:['免费','热门'], url:'https://marble.worldlabs.ai' },
 
   // ===== AI音频 =====
   { cat:'audio', icon:'🎵', name:'Suno', desc:'AI 音乐生成，输入歌词即可生成完整歌曲，支持多种风格', tags:['freemium','热门'], url:'https://suno.com' },
@@ -308,6 +311,7 @@ const tools = [
   { cat:'other', icon:'🎙️', name:'Wisprkey', desc:'macOS AI 语音输入工具，几乎任何应用中说就能写，支持 100+ 语言实时转写', tags:['免费'], url:'https://www.wisprkey.com' },
   { cat:'other', icon:'🤖', name:'千问办公 QwenWork', desc:'阿里 AI Agent 办公平台，深度集成钉钉，自动拆解任务、调用工具，交付可直接使用的办公产物', tags:['免费','热门'], url:'https://qwenwork.cn' },
   { cat:'other', icon:'🌐', name:'Kitesurf', desc:'Cloudflare 出品 Agent 优先浏览器，运行在 Workers 上，专为 AI 自动化设计，兼容 Puppeteer/Playwright', tags:['免费'], url:'https://kitesurf.cloudflare.app' },
+  { cat:'other', icon:'🤖', name:'豆包工作', desc:'字节跳动统一 AI 办公 Agent，围绕目标自主拆解任务、调用工具，授权后可操作浏览器和电脑，与飞书深度打通，交付可直接使用的成果', tags:['免费','热门'], url:'https://www.doubao.com/work' },
 ];
 
 let currentCategory = 'all';
