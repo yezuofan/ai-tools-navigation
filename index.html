@@ -153,6 +153,9 @@ const tools = [
   { cat:'chat', icon:'💬', name:'GLM-5.3-Flash', desc:'智谱开源新模型「牛来」，一度被误认是谷歌新作，国产开源大模型，推理速度快性价比高', tags:['免费','热门'], url:'https://open.bigmodel.cn' },
   { cat:'chat', icon:'💬', name:'GPT-6 Astra', desc:'OpenAI 新一代旗舰大模型，官方称迄今最智能、对齐度最高，主打 Computer Use：可操作电脑和浏览器闭环完成整套工作，ChatGPT 付费版、API 与 AWS 已上线', tags:['付费','热门'], url:'https://openai.com/index/gpt-6-astra/' },
   { cat:'chat', icon:'💬', name:'DeepSeek V4.1 Flash', desc:'DeepSeek 最新模型，9 月 10 日正式上线，原生多模态、生成速度翻倍，缓存输入价格降幅超六成，无需改代码即可自动适配新版本', tags:['免费','热门'], url:'https://chat.deepseek.com' },
+  { cat:'chat', icon:'💬', name:'GPT-6 Sol / Luna', desc:'OpenAI GPT-6 家族两款新模型，9 月 23 日发布，API 价格整体下调 50%：Sol 主打复杂编程与长程 Agent 工作流，Luna 主打高吞吐低成本，百万 token 输入最低 0.1 美元，免费用户也能在桌面端用到 Luna', tags:['freemium','热门'], url:'https://openai.com/index/introducing-gpt-6-sol-and-luna/' },
+  { cat:'chat', icon:'💬', name:'Claude Opus 5.5', desc:'Anthropic 9 月 22 日发布的新旗舰模型，官方称多数任务表现可媲美 Claude Fable 5.1，运行成本比 Opus 5 低 40%，擅长编码与超长程任务，定价同步下调两成', tags:['付费','热门'], url:'https://www.anthropic.com/news/claude-opus-5-5' },
+  { cat:'chat', icon:'💬', name:'Qwen3.8-Max', desc:'阿里云栖大会发布的千问新一代旗舰，靠递归自我改进自主完成 33 轮迭代，智能体与前端编程双榜第一，Qwen4 已投入训练、后续版本参数将扩至 5-10 万亿', tags:['免费','热门'], url:'https://chat.qwen.ai' },
 
   // ===== AI绘画 =====
   { cat:'image', icon:'🎨', name:'Midjourney', desc:'AI 绘画标杆，艺术感极强，适合创意设计和概念图', tags:['付费','热门'], url:'https://www.midjourney.com' },
@@ -176,6 +179,7 @@ const tools = [
   { cat:'image', icon:'🎨', name:'SenseNova U1.5 Lite', desc:'商汤开源 8B 生图模型，4K 直出，多图融合理解出色，比肩闭源 Image 2', tags:['免费','开源'], url:'https://www.sensenova.cn' },
   { cat:'image', icon:'🎨', name:'MAI-Image 2.6', desc:'微软新一代文生图模型，Arena 文生图榜跃居第二，Flash 版生图速度全球第一、成本直降 70%，Foundry 公开预览', tags:['付费','热门'], url:'https://ai.azure.com/catalog/models/MAI-Image-2.6-Flash?publisher=microsoft' },
   { cat:'image', icon:'🎨', name:'GPT-Image-2.5', desc:'OpenAI 新一代图像模型，生成延迟最多减半，参考图主体保持与多轮编辑一致性大幅提升，新增 Sketch 手绘参考、模板和图片评论精确改图，免费版可用', tags:['freemium','热门'], url:'https://openai.com/index/introducing-chatgpt-images-2-5/' },
+  { cat:'image', icon:'🎨', name:'混元 Hy Image3.5 Preview', desc:'腾讯混元 9 月 22 日发布的专业级图像生成/编辑模型，面向剧集分镜、影视物料与角色场景设定，首发接入腾讯视频 WorkRally 平台，上线两周内对创作者免费开放', tags:['免费','热门'], url:'https://hunyuan.tencent.com' },
 
   // ===== AI视频 =====
   { cat:'video', icon:'🎬', name:'Runway Gen-3', desc:'专业 AI 视频生成工具，影视级效果，支持图生视频和文生视频', tags:['付费','热门'], url:'https://runwayml.com' },
@@ -203,6 +207,8 @@ const tools = [
   { cat:'video', icon:'🎬', name:'FLUX Upscale', desc:'Black Forest Labs 视频增强工具，生成式重建任意视频至原生 4K，修复人脸模糊和纹理闪烁', tags:['免费','热门'], url:'https://bfl.ai' },
   { cat:'video', icon:'🎬', name:'Atlas', desc:'李飞飞 World Labs 发布的全球首个多模态世界模型，像素级相机控制生成运镜视频并重建 3D 空间，可在其 Marble 平台直接创作可走进的 3D 世界', tags:['免费','热门'], url:'https://marble.worldlabs.ai' },
   { cat:'video', icon:'🎬', name:'vivago R1', desc:'智象未来内容创作智能体，9 月 8 日全球上线，对话式交互一次生成 3-5 分钟完整成片，从「生成片段」走到「交付作品」，国内版本「够搭」同步升级', tags:['freemium','热门'], url:'https://vivago.ai' },
+  { cat:'video', icon:'🎬', name:'万镜一刻 镜仔Agent', desc:'阿里云全链路 AIGC 视频创作平台万镜一刻的升级版，基于万相 Wan3.0 打造，把模型能力嵌进短剧、营销、电商的生产流程，支持流程复用与批量交付，国际站 WonderClip 同步上线', tags:['freemium','热门'], url:'https://www.yikeai.com' },
+  { cat:'video', icon:'🎬', name:'NVIDIA Cosmos 3', desc:'英伟达新一代物理 AI 开放世界模型，用于生成可交互的仿真世界与合成训练数据，为机器人、自动驾驶等高阶具身智能场景提供数据底座', tags:['免费'], url:'https://www.nvidia.com/en-us/ai/cosmos/' },
 
   // ===== AI音频 =====
   { cat:'audio', icon:'🎵', name:'Suno', desc:'AI 音乐生成，输入歌词即可生成完整歌曲，支持多种风格', tags:['freemium','热门'], url:'https://suno.com' },
@@ -214,6 +220,7 @@ const tools = [
   { cat:'audio', icon:'🎵', name:'讯飞配音', desc:'科大讯飞 AI 配音，多种主播声音，适合做短视频配音', tags:['付费'], url:'https://peiyun.xfyun.cn' },
   { cat:'audio', icon:'🎵', name:'魔音工坊', desc:'AI 配音工具，支持情感化语音合成，适合自媒体', tags:['付费'], url:'https://www.moyin.com' },
   { cat:'audio', icon:'🎙️', name:'GPT-SoVITS', desc:'开源 AI 语音克隆与合成工具，1分钟音频即可训练高质量 TTS 模型', tags:['免费','开源','热门'], url:'https://github.com/RVC-Boss/GPT-SoVITS' },
+  { cat:'audio', icon:'🎵', name:'Gemini 3.8 Flash TTS', desc:'谷歌 9 月 23 日推出的文本转语音模型，用自然语言描述角色和口音就能定制音色，可逐句控制语气、语速，支持 30 秒音频样本复刻声音，覆盖 100+ 语言、2000+ 音色', tags:['免费','热门'], url:'https://aistudio.google.com' },
 
   // ===== 编程 =====
   { cat:'code', icon:'💻', name:'GitHub Copilot', desc:'AI 编程助手，集成 VS Code/JetBrains，代码补全强大', tags:['付费','热门'], url:'https://github.com/features/copilot' },
@@ -243,6 +250,7 @@ const tools = [
   { cat:'code', icon:'🛠️', name:'DeepSeek Harness', desc:'DeepSeek 官方开源 Agent 框架，13万+ stars，插件式架构，模型、工具、技能、会话全插件化', tags:['免费','开源','热门'], url:'https://github.com/deepseek-ai/deepseek-harness' },
   { cat:'code', icon:'💻', name:'Zread', desc:'智谱 AI 代码阅读工具，粘贴 GitHub 仓库链接秒变结构化中文手册，免费公益向开发者开放', tags:['免费','热门'], url:'https://zread.ai' },
   { cat:'code', icon:'💻', name:'Qoder', desc:'阿里云 AI 编程智能体，说句话就能生成可运行 APP，Agent-first 工作范式，深度适配 VS Code/JetBrains', tags:['免费','热门'], url:'https://qoder.com' },
+  { cat:'code', icon:'💻', name:'Kimi Code Desktop', desc:'月之暗面 9 月 21 日推出的编程智能体桌面客户端，macOS 与 Windows 同步上线，把 Plan/Goal 模式、Sub-agents 与 Swarm 多 Agent 协作装进图形界面，内置终端、浏览器和 Git 状态查看', tags:['免费','热门'], url:'https://www.kimi.com/code' },
 
   // ===== AI搜索 =====
   { cat:'search', icon:'🔍', name:'Perplexity', desc:'AI 搜索引擎中的标杆，实时联网+引用来源', tags:['freemium','热门'], url:'https://www.perplexity.ai' },
@@ -300,6 +308,8 @@ const tools = [
   { cat:'other', icon:'🤖', name:'Dify', desc:'开源 LLM 应用开发平台，可视化编排 AI 工作流，支持 RAG、Agent、对话应用', tags:['免费','开源','热门'], url:'https://dify.ai' },
   { cat:'other', icon:'🤖', name:'Coze', desc:'字节跳动 AI Bot 构建平台，支持多模型、插件和工作流，一键发布到多平台', tags:['免费','热门'], url:'https://www.coze.com' },
   { cat:'other', icon:'🤖', name:'AutoGPT', desc:'开源自主 AI 代理先驱，自动规划和执行多步任务，连接浏览器、文件和应用', tags:['免费','开源','热门'], url:'https://agpt.co' },
+  { cat:'other', icon:'🤖', name:'微软 Copilot 超级应用', desc:'微软 9 月 25 日发布的新版 Copilot，把聊天、编程和智能体收进同一个界面，分 Home、Code、Autopilot 三个标签页，Word/Excel/PPT 直接内嵌，Autopilot 可在云端长程挂机把活干完', tags:['freemium','热门'], url:'https://copilot.microsoft.com' },
+  { cat:'other', icon:'🧩', name:'Claude Marketplace', desc:'Anthropic 9 月 23 日上线的 Claude 企业应用市场，聚合 2000+ 插件与连接器，以及 Accenture、BCG、Deloitte 等顾问与系统集成服务，采购可计入已有 Anthropic 承诺额度', tags:['付费'], url:'https://claude.com/platform/marketplace' },
   { cat:'image', icon:'🎨', name:'Next3D', desc:'AI 3D 模型生成平台，支持文本/图片转 3D 模型，浏览器预览', tags:['免费'], url:'https://next3d.ai' },
   { cat:'image', icon:'🎨', name:'Vismint', desc:'浏览器端 AI 3D 模型生成器，支持文本和图片转 3D', tags:['免费'], url:'https://vismint.com' },
   { cat:'image', icon:'🖼️', name:'Upscayl', desc:'免费开源的 AI 图片放大工具，本地运行，无需联网即可提升分辨率', tags:['免费','开源'], url:'https://upscayl.org' },
