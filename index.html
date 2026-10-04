@@ -156,6 +156,10 @@ const tools = [
   { cat:'chat', icon:'💬', name:'GPT-6 Sol / Luna', desc:'OpenAI GPT-6 家族两款新模型，9 月 23 日发布，API 价格整体下调 50%：Sol 主打复杂编程与长程 Agent 工作流，Luna 主打高吞吐低成本，百万 token 输入最低 0.1 美元，免费用户也能在桌面端用到 Luna', tags:['freemium','热门'], url:'https://openai.com/index/introducing-gpt-6-sol-and-luna/' },
   { cat:'chat', icon:'💬', name:'Claude Opus 5.5', desc:'Anthropic 9 月 22 日发布的新旗舰模型，官方称多数任务表现可媲美 Claude Fable 5.1，运行成本比 Opus 5 低 40%，擅长编码与超长程任务，定价同步下调两成', tags:['付费','热门'], url:'https://www.anthropic.com/news/claude-opus-5-5' },
   { cat:'chat', icon:'💬', name:'Qwen3.8-Max', desc:'阿里云栖大会发布的千问新一代旗舰，靠递归自我改进自主完成 33 轮迭代，智能体与前端编程双榜第一，Qwen4 已投入训练、后续版本参数将扩至 5-10 万亿', tags:['免费','热门'], url:'https://chat.qwen.ai' },
+  { cat:'chat', icon:'💬', name:'Claude Sonnet 5.5', desc:'Anthropic 9 月 28 日发布的中档模型，输出速度提升 30% 以上、单任务成本最高降 30%，Terminal-Bench 4.0 编程跑分反超自家 Opus 5.5，与 GPT-6 Sol 同为 2/10 美元每百万 token 定价，Claude Code 已默认切换', tags:['付费','热门'], url:'https://claude.ai' },
+  { cat:'chat', icon:'💬', name:'GPT-6.1 Sol', desc:'OpenAI 9 月 29 日 DevDay 发布的日常主力模型，1.05M 上下文、单次输出最高 128K，官方称接近 Astra 水平但价格只有五分之一，每百万 token 输入 2 美元、输出 10 美元，已在 API、Codex 与 ChatGPT Work 上线', tags:['付费','热门'], url:'https://openai.com/index/introducing-gpt-6-1-sol/' },
+  { cat:'chat', icon:'💬', name:'Gemini 4 Argon', desc:'谷歌 9 月 30 日发布的 Gemini 4 世代首款旗舰，单次输出上限从 64K 拉到 100 万 token，知识工作与法律基准领先，介绍价每百万 token 输入 2 美元、输出 10 美元，首批只开放给网络安全防御团队，普通用户还用不上', tags:['付费','热门'], url:'https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/' },
+  { cat:'chat', icon:'💬', name:'Aleph Alpha Kolibri', desc:'德国 Aleph Alpha 10 月 3 日发布的主权开源模型，781 亿参数 MoE 每个 token 只激活 34.6 亿，按 Apache 2.0 在 Hugging Face 开放权重，主打德语英语与政企私有部署，支持四档推理强度、百万 token 上下文', tags:['免费','开源'], url:'https://www.aleph-alpha.com/' },
 
   // ===== AI绘画 =====
   { cat:'image', icon:'🎨', name:'Midjourney', desc:'AI 绘画标杆，艺术感极强，适合创意设计和概念图', tags:['付费','热门'], url:'https://www.midjourney.com' },
@@ -180,6 +184,7 @@ const tools = [
   { cat:'image', icon:'🎨', name:'MAI-Image 2.6', desc:'微软新一代文生图模型，Arena 文生图榜跃居第二，Flash 版生图速度全球第一、成本直降 70%，Foundry 公开预览', tags:['付费','热门'], url:'https://ai.azure.com/catalog/models/MAI-Image-2.6-Flash?publisher=microsoft' },
   { cat:'image', icon:'🎨', name:'GPT-Image-2.5', desc:'OpenAI 新一代图像模型，生成延迟最多减半，参考图主体保持与多轮编辑一致性大幅提升，新增 Sketch 手绘参考、模板和图片评论精确改图，免费版可用', tags:['freemium','热门'], url:'https://openai.com/index/introducing-chatgpt-images-2-5/' },
   { cat:'image', icon:'🎨', name:'混元 Hy Image3.5 Preview', desc:'腾讯混元 9 月 22 日发布的专业级图像生成/编辑模型，面向剧集分镜、影视物料与角色场景设定，首发接入腾讯视频 WorkRally 平台，上线两周内对创作者免费开放', tags:['免费','热门'], url:'https://hunyuan.tencent.com' },
+  { cat:'image', icon:'🎨', name:'FLUX 3 Image', desc:'Black Forest Labs 10 月 2 日发布的图像生成模型，最高直出 4K 分辨率，可在 0-1000 坐标网格上为元素指定 ID、描述与精确边界框，单次最多融入 10 张参考图，支持指定区域像素级保留的多轮编辑', tags:['freemium','热门'], url:'https://bfl.ai' },
 
   // ===== AI视频 =====
   { cat:'video', icon:'🎬', name:'Runway Gen-3', desc:'专业 AI 视频生成工具，影视级效果，支持图生视频和文生视频', tags:['付费','热门'], url:'https://runwayml.com' },
@@ -221,6 +226,7 @@ const tools = [
   { cat:'audio', icon:'🎵', name:'魔音工坊', desc:'AI 配音工具，支持情感化语音合成，适合自媒体', tags:['付费'], url:'https://www.moyin.com' },
   { cat:'audio', icon:'🎙️', name:'GPT-SoVITS', desc:'开源 AI 语音克隆与合成工具，1分钟音频即可训练高质量 TTS 模型', tags:['免费','开源','热门'], url:'https://github.com/RVC-Boss/GPT-SoVITS' },
   { cat:'audio', icon:'🎵', name:'Gemini 3.8 Flash TTS', desc:'谷歌 9 月 23 日推出的文本转语音模型，用自然语言描述角色和口音就能定制音色，可逐句控制语气、语速，支持 30 秒音频样本复刻声音，覆盖 100+ 语言、2000+ 音色', tags:['免费','热门'], url:'https://aistudio.google.com' },
+  { cat:'audio', icon:'🎵', name:'Suno Speech', desc:'Suno 10 月 1 日开放公测的语音功能，业界首个把念白与原创背景音乐一次性生成为同一条连贯音轨的音频模型，不走先做 TTS 再贴 BGM 的老流程，单次最长约 8 分钟，也能关掉配乐只留干净人声', tags:['freemium','热门'], url:'https://suno.com' },
 
   // ===== 编程 =====
   { cat:'code', icon:'💻', name:'GitHub Copilot', desc:'AI 编程助手，集成 VS Code/JetBrains，代码补全强大', tags:['付费','热门'], url:'https://github.com/features/copilot' },
@@ -251,6 +257,7 @@ const tools = [
   { cat:'code', icon:'💻', name:'Zread', desc:'智谱 AI 代码阅读工具，粘贴 GitHub 仓库链接秒变结构化中文手册，免费公益向开发者开放', tags:['免费','热门'], url:'https://zread.ai' },
   { cat:'code', icon:'💻', name:'Qoder', desc:'阿里云 AI 编程智能体，说句话就能生成可运行 APP，Agent-first 工作范式，深度适配 VS Code/JetBrains', tags:['免费','热门'], url:'https://qoder.com' },
   { cat:'code', icon:'💻', name:'Kimi Code Desktop', desc:'月之暗面 9 月 21 日推出的编程智能体桌面客户端，macOS 与 Windows 同步上线，把 Plan/Goal 模式、Sub-agents 与 Swarm 多 Agent 协作装进图形界面，内置终端、浏览器和 Git 状态查看', tags:['免费','热门'], url:'https://www.kimi.com/code' },
+  { cat:'code', icon:'🛠️', name:'Cloudflare OS', desc:'Cloudflare 10 月 4 日开源的内部 AI 生产力环境，基于 Workers 重写的 v2 版本，每个文档都是用户自己私有沙箱应用并自动暴露 Agent 可调用的 API，Gatekeeper 机制先本地模拟动作结果再决定要不要人工审批', tags:['免费','开源'], url:'https://github.com/cloudflare/cloudflare-os' },
 
   // ===== AI搜索 =====
   { cat:'search', icon:'🔍', name:'Perplexity', desc:'AI 搜索引擎中的标杆，实时联网+引用来源', tags:['freemium','热门'], url:'https://www.perplexity.ai' },
@@ -333,6 +340,10 @@ const tools = [
   { cat:'chat', icon:'💬', name:'阶跃 Step 5 Preview', desc:'阶跃星辰 9 月 20 日发布的旗舰基座模型，6000 亿参数 MoE 每次仅激活 270 亿，100 万词元上下文，AA 智能指数 44 分居全球开源前三，单任务成本只有美国旗舰的八分之一', tags:['freemium','热门'], url:'https://platform.stepfun.com' },
   { cat:'code', icon:'💻', name:'星辰大模型 Xing4.0', desc:'中国电信 9 月 17 日发布的轻量级代码智能体大模型，MoE 架构总参数 29B、激活仅 4B，国内首个基于国产算力和国产框架训练完成、面向复杂工程任务深度优化的百亿参数大模型', tags:['免费'], url:'https://www.teleai.com.cn' },
   { cat:'other', icon:'🤖', name:'Meta Muse', desc:'Meta 推出的免费个人 AI 智能体，运行在独立的 Muse Secure VM 上，可代为购物、发邮件、规划行程，支持 iOS、安卓、网页与 WhatsApp，目前面向美国 18 岁以上用户开放', tags:['免费','热门'], url:'https://ai.meta.com/muse/' },
+  { cat:'other', icon:'🤖', name:'OpenAI Dots', desc:'OpenAI 9 月 29 日 DevDay 发布的常驻智能体，每个 Dot 由 GPT-6 Astra 驱动、自带云端电脑与浏览器，关掉电脑它仍在后台做研究、建文档、写软件，可经 ChatGPT、Slack、Teams 与语音触达，捆绑在 100 美元起的 Pro 档', tags:['付费','热门'], url:'https://openai.com/index/introducing-dots/' },
+  { cat:'other', icon:'🤖', name:'Manus Cue', desc:'Manus 9 月 28 日随 2.0 一起发布的个人 Agent 应用，界面看起来像即时通讯软件，但联系人全是 AI：每个 Agent 有独立邮箱、手机号、云电脑和数字钱包，可以拉进同一个群聊像团队一样分工协作', tags:['付费','热门'], url:'https://manus.im' },
+  { cat:'other', icon:'🧩', name:'LDraw Nova', desc:'10 月初在 GitHub 走红的开源工具，让 AI Agent 从一句提示词生成真能拼的乐高设计，输出 LDR 模型、STEP/IGES 工业 CAD 文件、BOM 采购清单与分步搭建脚本，已有一键出 2000 多块零件方案的实绩', tags:['免费','开源'], url:'https://github.com/anteloc/ldraw-nova' },
+
 ];
 
 let currentCategory = 'all';
