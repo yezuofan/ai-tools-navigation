@@ -381,6 +381,14 @@ const tools = [
   { cat:'other', icon:'🤖', name:'Runway App Studio', desc:'Runway 10 月 26 日上线的创作应用工厂，用大白话描述想要的小工具，它就写代码、测试并部署出一个带独立界面的应用，直接调用 Runway 的图像、视频和音频模型以及团队品牌套件，可私有、可团队共享、也可发链接，所有付费套餐都包含', tags:['付费'], url:'https://runway.com/news/company-news/introducing-runway-app-studio' },
   { cat:'other', icon:'📄', name:'文心 Unlimited OCR 2', desc:'百度 10 月 27 日发布并开源的文档解析模型，主打页数自由：几百页招股书、合同卷宗、仓库档案一次读完，靠稀疏参考滑动窗口注意力把单步解码速度提到全注意力的 7 倍，MPDocBench 84.6 分、MarathonDocBench 77.1 分均为 SOTA，代码与权重已开放', tags:['免费','开源','热门'], url:'https://ai.baidu.com/support/news?action=detail&id=3290' },
 
+  // ===== 2026-11-09 新增（11/02–11/08 发布）=====
+  { cat:'chat', icon:'💬', name:'GPT-6 Cyber', desc:'OpenAI 11 月 5 日发布的网络安全专用模型，也是其 Preparedness 框架下首个被定级为 Critical 的模型，ExploitGym 基准拿到 48.5%，能在研究者授权的范围内自主找可利用漏洞并写出修复补丁，官方称已在真实安全关键代码库里验证出上千个漏洞；首批只通过 Daybreak 计划向防守方开放', tags:['付费'], url:'https://openai.com/index/introducing-gpt-6-cyber/' },
+  { cat:'chat', icon:'💬', name:'混元 Hy4', desc:'腾讯 11 月 4 日发布的正式版旗舰，770B 总参数、49B 激活的 MoE，上下文拉到 100 万 token，第一次同时具备视觉理解与电脑操作能力，还针对 Blender、CAD 和跨应用长程任务做了专项训练；定价与预览版持平不加价，权重承诺近期开源，可走腾讯云 TokenHub 的 OpenAI 兼容接口', tags:['freemium','热门'], url:'https://hunyuan.tencent.com' },
+  { cat:'chat', icon:'💬', name:'Inkling 2 Small', desc:'Thinking Machines Lab 11 月 5 日发布的第二代模型，594B 总参数每次只激活 17B，支持图片输入和可调思考强度，Artificial Analysis 智能指数 31 分，官方称在智能体编程、视觉和知识工作上大幅超越上一代；现在就能在 Tinker 上推理和微调，服务端每百万输入 token 0.30 美元，Apache 2.0 权重承诺随后开放', tags:['付费','热门'], url:'https://thinkingmachines.ai/news/inkling-2-small/' },
+  { cat:'image', icon:'🎨', name:'GPT Image 2.6', desc:'OpenAI 11 月 4 日上线的新一代图像模型，API 分 Sunburst 和 Flare 两档，出图速度比上代快 50%（Flare 在低质量档最快 6 秒一张），新增 SVG 矢量导出、2-64 帧且帧时长可配的动画 GIF，以及标记引导编辑可以圈着局部改；ChatGPT、Codex 各档订阅和 API 都已可用', tags:['freemium','热门'], url:'https://openai.com/index/introducing-images-2-6/' },
+  { cat:'video', icon:'🎬', name:'Gemini Omni 1.2 Flash', desc:'谷歌 11 月 5 日推出的视频生成模型，单段原生长度从 10 秒推到 15 秒，真正的看点是能围着同一条片子一轮轮对话式修改；首尾帧插值支持 3-10 秒、逐轮延展累计最长 30 秒，最多吃 6 张参考图保持人物主体一致，720p 每秒 0.07 美元、输出价整体降三成', tags:['付费','热门'], url:'https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/' },
+  { cat:'code', icon:'💻', name:'SWE-2 Flash', desc:'Cognition 11 月 4 日推出的轻量编程模型，速度约是 SWE-2 的 3 倍、价格只有五分之一，明确不追各项基准第一，专攻自动化重构、代码审查、功能开发和文档更新这类要跑量的日常活；已在 Devin Desktop 和 Devin CLI 上线，符合条件的付费方案限时免费用到 11 月底', tags:['付费','热门'], url:'https://cognition.com/blog/swe-2-flash' },
+
 ];
 
 let currentCategory = 'all';
