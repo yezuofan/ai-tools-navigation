@@ -389,6 +389,14 @@ const tools = [
   { cat:'video', icon:'🎬', name:'Gemini Omni 1.2 Flash', desc:'谷歌 11 月 5 日推出的视频生成模型，单段原生长度从 10 秒推到 15 秒，真正的看点是能围着同一条片子一轮轮对话式修改；首尾帧插值支持 3-10 秒、逐轮延展累计最长 30 秒，最多吃 6 张参考图保持人物主体一致，720p 每秒 0.07 美元、输出价整体降三成', tags:['付费','热门'], url:'https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/' },
   { cat:'code', icon:'💻', name:'SWE-2 Flash', desc:'Cognition 11 月 4 日推出的轻量编程模型，速度约是 SWE-2 的 3 倍、价格只有五分之一，明确不追各项基准第一，专攻自动化重构、代码审查、功能开发和文档更新这类要跑量的日常活；已在 Devin Desktop 和 Devin CLI 上线，符合条件的付费方案限时免费用到 11 月底', tags:['付费','热门'], url:'https://cognition.com/blog/swe-2-flash' },
 
+  // ===== 2026-11-16 新增（11/09–11/15 发布）=====
+  { cat:'chat', icon:'💬', name:'Claude Fable 5.2 / Mythos 5.2', desc:'Anthropic 11 月 9 日发布的旗舰双模型，官方称测过的几乎每一项能力都比 Opus 5.5 强一档：1000 个子代理干 8 天从空文件夹做出能真机启动的原型操作系统，30 小时做完费马大定理的形式化证明；输出速度快 30%、每百万 token 输入 8 美元输出 40 美元（比上代降两成），Fable 5.2 还能当 Advisor 给小模型答疑或当 Orchestrator 分派任务', tags:['付费','热门'], url:'https://www.anthropic.com/claude-fable-and-mythos-5-2' },
+  { cat:'chat', icon:'💬', name:'Qwen4-Max Preview', desc:'阿里 11 月 11 日把下一代旗舰 Qwen4-Max 的预览版首发在 Token Plan 上，重点提升编程和智能体任务执行能力，千问办公、Qoder 等自家产品同步接入，正式版 Qwen4 已在路上', tags:['付费','热门'], url:'https://chat.qwen.ai' },
+  { cat:'chat', icon:'💬', name:'Gemini 4 Hydrogen', desc:'谷歌 11 月 12 日发布，这次干脆把 Flash 的品牌名去掉了：输入输出各 1M token、四档思考强度（新增 xhigh 档），比 Gemini 3.8 Flash 快 2.5 倍、幻觉陈述少 5 倍以上；每百万 token 输入 1.5 美元输出 7.5 美元，配 Antigravity 的 Orchestrator 能让 Carbon 统筹、Hydrogen 干活和校验，配额省 24%', tags:['freemium','热门'], url:'https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/' },
+  { cat:'chat', icon:'💬', name:'ERNIE 5.5 Flash Preview', desc:'百度文心 11 月 11 日发布的后训练版，280B 总参数每 token 只激活 14B 的稀疏 MoE，1M 上下文，面向编程、智能体、知识工作和深度研究；官方承诺 11 月 25 日前放出开源权重，现在可在千帆先试', tags:['免费','开源'], url:'https://ernie.baidu.com/release/ernie-5-5-flash-preview/' },
+  { cat:'image', icon:'🎨', name:'Seedream 5.5', desc:'字节 Seed 团队 11 月 9 日发布的图像创作模型，原生直出透明半透明素材（带 Alpha 通道），像素级可控编辑，一张图连改 100 轮还能保住角色、产品和场景细节；2K 方图编辑单张 0.28 元，比 Seedream 5.0 Pro 便宜 60%、速度接近快 40%，火山引擎和即梦已上线', tags:['freemium','热门'], url:'https://www.volcengine.com/product/seedream' },
+  { cat:'other', icon:'🤖', name:'Claude Meetings', desc:'Anthropic 11 月 12 日开测的会议助手，把 Claude 拉进 Google Meet 当可见参会者：边开会边记笔记、随时被点起来回答问题，还能当场产出文档、白板和任务清单，目前只对 Team 和 Enterprise 计划内测', tags:['付费'], url:'https://support.claude.com/en/articles/12138966-release-notes' },
+
 ];
 
 let currentCategory = 'all';
